@@ -732,38 +732,38 @@ module.exports.PivotCell = react.createClass({
 });
 
 function getClassname(compProps) {
-        var cell = compProps.cell;
-        var classname = cell.cssclass;
-        var isEmpty = cell.template === 'cell-template-empty';
+    var cell = compProps.cell;
+    var classname = cell.cssclass;
+    var isEmpty = cell.template === 'cell-template-empty';
 
-        if (!cell.visible()) {
-            classname += ' cell-hidden';
-        }
-
-        if (cell.type === uiheaders.HeaderType.SUB_TOTAL && cell.expanded) {
-            classname += ' header-st-exp';
-        }
-
-        if (cell.type === uiheaders.HeaderType.GRAND_TOTAL) {
-            if (cell.dim.depth === 1) {
-                classname += ' header-nofields';
-            } else if (cell.dim.depth > 2) {
-                classname += ' header-gt-exp';
-            }
-        }
-
-        if (compProps.leftmost) {
-            classname += ' ' + (cell.template === 'cell-template-datavalue' ? 'cell' : 'header') + '-leftmost';
-        }
-
-        if (compProps.topmost) {
-            classname += ' cell-topmost';
-        }
-
-        return classname;
+    if (!cell.visible()) {
+        classname += ' cell-hidden';
     }
-    /* global module, require, react, domUtils */
-    /*jshint eqnull: true*/
+
+    if (cell.type === uiheaders.HeaderType.SUB_TOTAL && cell.expanded) {
+        classname += ' header-st-exp';
+    }
+
+    if (cell.type === uiheaders.HeaderType.GRAND_TOTAL) {
+        if (cell.dim.depth === 1) {
+            classname += ' header-nofields';
+        } else if (cell.dim.depth > 2) {
+            classname += ' header-gt-exp';
+        }
+    }
+
+    if (compProps.leftmost) {
+        classname += ' ' + (cell.template === 'cell-template-datavalue' ? 'cell' : 'header') + '-leftmost';
+    }
+
+    if (compProps.topmost) {
+        classname += ' cell-topmost';
+    }
+
+    return classname;
+}
+/* global module, require, react, domUtils */
+/*jshint eqnull: true*/
 
 'use strict';
 

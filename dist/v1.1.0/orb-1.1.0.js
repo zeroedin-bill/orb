@@ -3971,8 +3971,6 @@
                 return classname;
             }
 
-
-
             var dragManager = module.exports.DragManager = (function() {
 
                 var _pivotComp = null;

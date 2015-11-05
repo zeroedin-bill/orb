@@ -5,7 +5,7 @@
 
 'use strict';
 
-/* global module, require, React, window */
+/* global module, require, React, ReactDOM, window */
 /*jshint eqnull: true*/
 
 var axe = require('./orb.axe');
@@ -169,7 +169,7 @@ module.exports = function(config) {
                 pgridwidget: self
             });
 
-            pivotComponent = React.render(pivottable, element);
+            pivotComponent = ReactDOM.render(pivottable, element);
         }
     };
 

@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+
 
 /* global module, require, React */
 /*jshint eqnull: true*/
@@ -16,7 +16,7 @@ module.exports.PivotCell = react.createClass({
     this.props.pivotTableComp.collapseRow(this.props.cell);
   },
   updateCellInfos: function() {
-    var node = this.getDOMNode();
+    var node = ReactDOM.findDOMNode(this);
     var cell = this.props.cell;
     node.__orb = node.__orb || {};
 
@@ -25,7 +25,7 @@ module.exports.PivotCell = react.createClass({
       node.__orb._visible = false;
 
     } else {
-      var cellContentNode = this.refs.cellContent.getDOMNode();
+      var cellContentNode = this.refs.cellContent;
 
       var propList = [];
       var retPaddingLeft = _paddingLeft == null;

@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+
 
 /* global module, require, react */
 /*jshint node: true, eqnull: true*/
@@ -10,13 +10,13 @@ module.exports.Toolbar = react.createClass({
   componentDidMount: function() {
     for(var i = 0; i < this._toInit.length; i++){
       var btn = this._toInit[i];
-      btn.init(this.props.pivotTableComp, this.refs[btn.ref].getDOMNode());      
+      btn.init(this.props.pivotTableComp, this.refs[btn.ref]);
     }
   },
   componentDidUpdate: function() {
     for(var i = 0; i < this._toInit.length; i++){
       var btn = this._toInit[i];
-      btn.init(this.props.pivotTableComp, this.refs[btn.ref].getDOMNode());      
+      btn.init(this.props.pivotTableComp, this.refs[btn.ref]);
     }
   },
   createCallback: function(action) {

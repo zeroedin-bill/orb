@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+
 
 /* global module, require, react */
 /*jshint eqnull: true*/

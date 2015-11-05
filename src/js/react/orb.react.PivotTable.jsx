@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+
 
 /* global module, require, React */
 
@@ -78,7 +78,7 @@ module.exports.PivotTable = react.createClass({
     }
   },
   updateClasses: function() {
-      var thisnode = this.getDOMNode();
+      var thisnode = ReactDOM.findDOMNode(this);
       var classes = this.pgridwidget.pgrid.config.theme.getPivotClasses();    
       thisnode.className = classes.container;
       thisnode.children[1].className = classes.table;
@@ -87,16 +87,16 @@ module.exports.PivotTable = react.createClass({
     this.synchronizeWidths();
   },
   componentDidMount: function() {
-    var fontInfos = domUtils.getStyle(this.getDOMNode(), ['font-family', 'font-size'], true);
+    var fontInfos = domUtils.getStyle(ReactDOM.findDOMNode(this), ['font-family', 'font-size'], true);
     this.fontStyle = {
       fontFamily: fontInfos[0], 
       fontSize: fontInfos[1]
     };
 
-    var dataCellsNode = this.refs.dataCells.getDOMNode();
+    var dataCellsNode = ReactDOM.findDOMNode(this.refs.dataCells);
     var dataCellsTableNode = dataCellsNode.children[0];
-    var colHeadersNode = this.refs.colHeaders.getDOMNode();
-    var rowHeadersNode = this.refs.rowHeaders.getDOMNode();
+    var colHeadersNode = this.refs.colHeaders;
+    var rowHeadersNode = this.refs.rowHeaders;
 
     this.refs.horizontalScrollBar.setScrollClient(dataCellsNode, function(scrollPercent) {
       var scrollAmount = Math.ceil(
@@ -127,11 +127,11 @@ module.exports.PivotTable = react.createClass({
     var scrollbar;
     var amount;
 
-    if(e.currentTarget == (elem = this.refs.colHeaders.getDOMNode())) {
+    if(e.currentTarget == (elem = this.refs.colHeaders)) {
       scrollbar = this.refs.horizontalScrollBar;
       amount = e.deltaX || e.deltaY;
-    } else if((e.currentTarget == (elem = this.refs.rowHeaders.getDOMNode())) ||
-              (e.currentTarget == (elem = this.refs.dataCells.getDOMNode())) ) {
+    } else if((e.currentTarget == (elem = this.refs.rowHeaders)) ||
+              (e.currentTarget == (elem = this.refs.dataCells)) ) {
       scrollbar = this.refs.verticalScrollBar;
       amount = e.deltaY;
     }

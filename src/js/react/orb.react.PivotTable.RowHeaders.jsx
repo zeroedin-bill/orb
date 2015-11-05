@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+
 
 /* global module, require, React */
 
@@ -6,8 +6,8 @@
 
 module.exports.PivotTableRowHeaders = react.createClass({
   setColGroup: function(widths) {
-    var node = this.getDOMNode();
-    var colGroupNode = this.refs.colgroup.getDOMNode();
+    var node = ReactDOM.findDOMNode(this);
+    var colGroupNode = this.refs.colgroup;
     node.style.tableLayout = 'auto';
 
     colGroupNode.innerHTML = '';

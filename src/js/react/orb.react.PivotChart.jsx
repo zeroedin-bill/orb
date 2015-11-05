@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+
 
 /* global module, require, React */
 
@@ -55,7 +55,7 @@ module.exports.PivotChart = react.createClass({
     }
   },
   updateClasses: function() {
-      var thisnode = this.getDOMNode();
+      var thisnode = ReactDOM.findDOMNode(this);
       var classes = this.pgridwidget.pgrid.config.theme.getPivotClasses();    
       thisnode.className = classes.container;
       thisnode.children[1].className = classes.table;
@@ -64,7 +64,7 @@ module.exports.PivotChart = react.createClass({
     this.synchronizeWidths();
   },
   componentDidMount: function() {
-    var fontInfos = domUtils.getStyle(this.getDOMNode(), ['font-family', 'font-size'], true);
+    var fontInfos = domUtils.getStyle(ReactDOM.findDOMNode(this), ['font-family', 'font-size'], true);
     this.fontStyle = {
       fontFamily: fontInfos[0], 
       fontSize: fontInfos[1]

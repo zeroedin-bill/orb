@@ -17,7 +17,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var beautify = require('gulp-jsbeautifier');
 var header = require('gulp-header');
 var concat = require('gulp-concat');
-var react = require('gulp-react');
+var babel = require('gulp-babel');
 var less = require('gulp-less');
 var cleancss = require("gulp-minify-css");
 var jasmine = require('gulp-jasmine');
@@ -37,7 +37,7 @@ var banner =
           ' */\n\n';
 
 var jshintOptions =
-          '/* global module, require, define, window, document, global, React */\n' +
+          '/* global module, require, define, window, document, global, React, ReactDOM */\n' +
           '/*jshint node: true, eqnull: true*/\n\n';
 
 var namelatest = 'orb';
@@ -137,9 +137,10 @@ gulp.task('react', ['less'], function() {
 			  './src/js/react/orb.react.Grid.jsx',                    './src/js/react/orb.react.Dialog.jsx',
 			  './src/js/react/orb.react.Toolbar.jsx',                 './src/js/react/orb.react.PivotTable.SizingManager.jsx'])
 
+	.pipe(babel({
+				presets: ['react']
+			}))
 	.pipe(concat('orb.react.compiled.js'))
-	.pipe(react())
-	//.pipe(concat('orb.react.compiled.js'))
 	.pipe(beautify({indent_size: 2}))
 	.pipe(gulp.dest('./src/js/react/'));
 });

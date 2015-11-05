@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+
 
 /* global module, react, React */
 /*jshint eqnull: true*/
@@ -14,7 +14,7 @@ module.exports.FilterPanel = react.createClass({
 		return {};
 	},
 	destroy: function() {
-		var container = this.getDOMNode().parentNode;
+		var container = ReactDOM.findDOMNode(this).parentNode;
 		React.unmountComponentAtNode(container);
 		container.parentNode.removeChild(container);
 	},
@@ -23,7 +23,7 @@ module.exports.FilterPanel = react.createClass({
 		this.destroy();
 	},
 	onMouseDown: function(e) {
-		var container = this.getDOMNode().parentNode;
+		var container = ReactDOM.findDOMNode(this).parentNode;
 		var target = e.target || e.srcElement;
 		while(target != null) {
 			if(target == container) {
@@ -35,7 +35,7 @@ module.exports.FilterPanel = react.createClass({
 		this.destroy();
 	},
 	onMouseWheel: function(e) {
-		var valuesTable = this.refs.valuesTable.getDOMNode();		
+		var valuesTable = this.refs.valuesTable;
 		var target = e.target || e.srcElement;
 		while(target != null) {
 			if(target == valuesTable) {
@@ -56,7 +56,7 @@ module.exports.FilterPanel = react.createClass({
 		utils.addEventListener(window, 'resize', this.destroy);
 	},
 	componentDidMount: function() {
-		this.filterManager.init(this.getDOMNode());
+		this.filterManager.init(ReactDOM.findDOMNode(this));
 	},
 	componentWillUnmount : function() {
 		utils.removeEventListener(document, 'mousedown', this.onMouseDown);

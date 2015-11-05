@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+
 
 /* global module, react, React */
 /*jshint eqnull: true*/
@@ -7,8 +7,8 @@
 
 module.exports.Dropdown = react.createClass({
 	openOrClose: function(e) {
-		var valueNode = this.refs.valueElement.getDOMNode();
-		var valuesListNode = this.refs.valuesList.getDOMNode();
+		var valueNode = this.refs.valueElement;
+		var valuesListNode = this.refs.valuesList;
 		var target = e.target || e.srcElement;
 
 		if(target === valueNode && valuesListNode.style.display === 'none') {
@@ -18,12 +18,12 @@ module.exports.Dropdown = react.createClass({
 		}
 	},
 	onMouseEnter: function() {
-		var valueNode = this.refs.valueElement.getDOMNode();
+		var valueNode = this.refs.valueElement;
 		valueNode.className = "orb-tgl-btn-down";
 		valueNode.style.backgroundPosition = 'right center';
 	},
 	onMouseLeave: function() {
-		this.refs.valueElement.getDOMNode().className = "";
+		this.refs.valueElement.className = "";
 	},
 	componentDidMount: function() {
 		utils.addEventListener(document, 'click', this.openOrClose);
@@ -32,7 +32,7 @@ module.exports.Dropdown = react.createClass({
 		utils.removeEventListener(document, 'click', this.openOrClose);
 	},
 	selectValue: function(e) {
-		var listNode = this.refs.valuesList.getDOMNode();
+		var listNode = this.refs.valuesList;
 		var target = e.target || e.srcElement;
 		var isli = false;
 		while(!isli && target != null) {
@@ -45,7 +45,7 @@ module.exports.Dropdown = react.createClass({
 
 		if(isli) {
 			var value = target.textContent;
-			var valueElement = this.refs.valueElement.getDOMNode();
+			var valueElement = this.refs.valueElement;
 			if(valueElement.textContent != value) {
 				valueElement.textContent = value;
 				if(this.props.onValueChanged) {

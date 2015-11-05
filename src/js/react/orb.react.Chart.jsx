@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+
 
 /* global module, require, React */
 
@@ -41,7 +41,7 @@ module.exports.Chart = react.createClass({
       };
 
       if(typeof google.visualization[this.props.chartMode.type] === 'function') {
-        var chart = new google.visualization[this.props.chartMode.type](this.getDOMNode());
+        var chart = new google.visualization[this.props.chartMode.type](ReactDOM.findDOMNode(this));
         chart.draw(data, options);
       }
     }

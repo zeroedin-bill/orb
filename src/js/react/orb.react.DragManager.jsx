@@ -102,7 +102,7 @@ var dragManager = module.exports.DragManager = (function() {
 					setCurrDropIndicator(null);
 
 				} else {
-					_dragNode = _currDragElement.getDOMNode();
+					_dragNode = ReactDOM.findDOMNode(_currDragElement);
 				}
 			}
 		},
@@ -154,7 +154,7 @@ var dragManager = module.exports.DragManager = (function() {
 
 				domUtils.forEach(_dropTargets, function(target) {
 					if(!foundTarget) {
-						var tnodeRect = target.component.getDOMNode().getBoundingClientRect();
+						var tnodeRect = ReactDOM.findDOMNode(target.component).getBoundingClientRect();
 						var isOverlap = doElementsOverlap(dragNodeRect, tnodeRect);
 						if(isOverlap) {
 							foundTarget = target;
@@ -174,7 +174,7 @@ var dragManager = module.exports.DragManager = (function() {
 
 								var targetIndicator = indicator.component.props.axetype === foundTarget.component.props.axetype;
 								if(targetIndicator && !elementOwnIndicator) {	
-									var tnodeRect = indicator.component.getDOMNode().getBoundingClientRect();
+									var tnodeRect = ReactDOM.findDOMNode(indicator.component).getBoundingClientRect();
 									var isOverlap = doElementsOverlap(dragNodeRect, tnodeRect);
 									if(isOverlap) {
 										foundIndicator = indicator;

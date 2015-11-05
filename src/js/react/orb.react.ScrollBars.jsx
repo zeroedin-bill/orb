@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+
 
 /* global module, require, React, react, domUtils, document */
 /*jshint eqnull: true*/
@@ -38,7 +38,7 @@ var scrollBarMixin = {
     // drag with left mouse button
     if (e.button !== 0) return;
 
-    var thumbElem  = this.refs.scrollThumb.getDOMNode();
+    var thumbElem  = this.refs.scrollThumb;
     var thumbposInParent = domUtils.getParentOffset(thumbElem);
     var mousePageXY = utils.getMousePageXY(e);
 
@@ -58,7 +58,7 @@ var scrollBarMixin = {
   onMouseUp: function() {
 
     if(this.state.mousedown) {
-      var thumbElem  = this.refs.scrollThumb.getDOMNode();
+      var thumbElem  = this.refs.scrollThumb;
       domUtils.removeClass(thumbElem, 'orb-scrollthumb-hover');
     }
 
@@ -84,7 +84,7 @@ var scrollBarMixin = {
     if(this.scrollClient != null) {
       return domUtils.getSize(this.scrollClient)[this.sizeProp];
     } else {
-      return domUtils.getSize(this.getDOMNode())[this.sizeProp];
+      return domUtils.getSize(ReactDOM.findDOMNode(this))[this.sizeProp];
     }
   },
   setScrollClient: function(scrollClient, scrollCallback) {

@@ -1,10 +1,14 @@
 
 
-/* global module, require, React */
+/* global module, require */
 
-'use strict';
+"use strict";
 
-module.exports.Grid = react.createClass({
+var React = require('react'),
+    ReactDOM = require('react-dom'),
+    utils = require('../orb.utils');
+
+module.exports = React.createClass({
   render: function() {
     var data = this.props.data;
     var headers = this.props.headers;

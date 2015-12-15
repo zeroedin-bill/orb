@@ -1,21 +1,24 @@
 
 
-/* global module, require, react */
+/* global module, require */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
+var React = require('react'),
+	ReactDOM = require('react-dom'),
+	DragManager = require('./DragManager');
 
-module.exports.DropIndicator = react.createClass({
+module.exports = React.createClass({
 	displayName: 'DropIndicator',
 	getInitialState: function () {
-		dragManager.registerIndicator(this, this.props.axetype, this.props.position, this.onDragOver, this.onDragEnd);
+		DragManager.registerIndicator(this, this.props.axetype, this.props.position, this.onDragOver, this.onDragEnd);
 		return {
 			isover: false
 		};
 	},
 	componentWillUnmount : function() {
-		dragManager.unregisterIndicator(this);
+		DragManager.unregisterIndicator(this);
 	},
 	onDragOver: function(callback) {
 		if(this.isMounted()) {

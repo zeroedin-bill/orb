@@ -1,11 +1,16 @@
 
 
-/* global module, require, react */
+/* global module, require */
 /*jshint node: true, eqnull: true*/
 
-'use strict';
+"use strict";
 
-module.exports.Toolbar = react.createClass({
+var React = require('react'),
+    ReactDOM = require('react-dom'),
+    axe = require('../orb.axe'),
+    domUtils = require('../orb.utils.dom');
+
+module.exports = React.createClass({
   _toInit: [],
   componentDidMount: function() {
     for(var i = 0; i < this._toInit.length; i++){

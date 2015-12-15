@@ -1,13 +1,21 @@
 
 
-/* global module, require, react */
+/* global module, require */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
+
+var React = require('react'),
+	domUtils = require('../orb.utils.dom'),
+	utils = require('../orb.utils'),
+	dragManager = require('./DragManager'),
+	ReactDOM = require('react-dom'),
+	axe = require('../orb.axe'),
+	FilterPanel = require('./FilterPanel');
 
 var pbid = 0;
 
-module.exports.PivotButton = react.createClass({
+module.exports = React.createClass({
 	displayName: 'PivotButton',
 	getInitialState: function () {
 		this.pbid = ++pbid;
@@ -28,7 +36,7 @@ module.exports.PivotButton = react.createClass({
 		var filterButtonPos = domUtils.getOffset(filterButton);
 		var filterContainer = document.createElement('div');
 
-        var filterPanelFactory = React.createFactory(comps.FilterPanel);
+        var filterPanelFactory = React.createFactory(FilterPanel);
         var filterPanel = filterPanelFactory({
             field: this.props.field.name,
             pivotTableComp: this.props.pivotTableComp

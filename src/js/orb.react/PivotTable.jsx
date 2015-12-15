@@ -1,19 +1,35 @@
 
 
-/* global module, require, React */
+/* global module, require */
 
-'use strict';
+"use strict";
+
+var React = require('react'),
+    ReactDOM = require('react-dom'),
+    domUtils = require('../orb.utils.dom'),
+    utils = require('../orb.utils'),
+    Toolbar = require('./Toolbar'),
+    UpperButtons = require('./PivotTable.UpperButtons'),
+    ColumnButtons = require('./PivotTable.ColumnButtons'),
+    RowButtons = require('./PivotTable.RowButtons'),
+    RowHeaders = require('./PivotTable.RowHeaders'),
+    ColumnHeaders = require('./PivotTable.ColumnHeaders'),
+    DataCells = require('./PivotTable.DataCells'),
+    HorizontalScrollBar = require('./HorizontalScrollBar'),
+    VerticalScrollBar = require('./VerticalScrollBar'),
+    SizingManager = require('./PivotTable.SizingManager'),
+    DragManager = require('./DragManager');
 
 var pivotId = 1;
 var themeChangeCallbacks = {};
 
-module.exports.PivotTable = react.createClass({
+module.exports = React.createClass({
   id: pivotId++,
   pgrid: null,
   pgridwidget: null,
   fontStyle: null,
   getInitialState: function() {
-    comps.DragManager.init(this);
+    DragManager.init(this);
     
     themeChangeCallbacks[this.id] = [];
     this.registerThemeChanged(this.updateClasses);
@@ -142,7 +158,7 @@ module.exports.PivotTable = react.createClass({
     }
   },
   synchronizeWidths: function() {
-    comps.SizingManager.synchronizeWidths(this);
+    SizingManager.synchronizeWidths(this);
     this.refs.horizontalScrollBar.refresh();
     this.refs.verticalScrollBar.refresh();
   },
@@ -151,15 +167,6 @@ module.exports.PivotTable = react.createClass({
     var self = this;
 
     var config = this.pgridwidget.pgrid.config;
-    var Toolbar = comps.Toolbar;
-    var UpperButtons = comps.PivotTableUpperButtons;
-    var ColumnButtons = comps.PivotTableColumnButtons;
-    var RowButtons = comps.PivotTableRowButtons;
-    var RowHeaders = comps.PivotTableRowHeaders;
-    var ColumnHeaders = comps.PivotTableColumnHeaders;
-    var DataCells = comps.PivotTableDataCells;
-    var HorizontalScrollBar = comps.HorizontalScrollBar;
-    var VerticalScrollBar = comps.VerticalScrollBar;
 
     var classes = config.theme.getPivotClasses();    
 

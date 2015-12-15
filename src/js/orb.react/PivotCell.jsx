@@ -1,14 +1,19 @@
 
 
-/* global module, require, React */
+/* global module, require */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
+
+var React = require('react'),
+    domUtils = require('../orb.utils.dom'),
+    ReactDOM = require('react-dom'),
+    uiheaders = require('../orb.ui.header');
 
 var _paddingLeft = null;
 var _borderLeft = null;
 
-module.exports.PivotCell = react.createClass({
+module.exports = React.createClass({
   expand: function() {
     this.props.pivotTableComp.expandRow(this.props.cell);
   },

@@ -1,9 +1,9 @@
 
 
-/* global module, require, React, window */
+/* global module, require */
 /*jshint node: true*/
 
-'use strict';
+"use strict";
 
 var react = typeof window === 'undefined' ? require('react') : window.React;
 var utils = require('../orb.utils');

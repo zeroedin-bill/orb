@@ -1,10 +1,13 @@
 
 
-/* global module, domUtils */
+/* global module, require */
 
-'use strict';
+"use strict";
 
-var SizingManager = module.exports.SizingManager = {
+var ReactDOM = require('react-dom'),
+    domUtils = require('../orb.utils.dom');
+
+var SizingManager = module.exports = {
   synchronizeWidths: function(pivotComp) {
     if(pivotComp.pgridwidget.pgrid.config.chartMode.enabled) {
       return SizingManager.synchronizePivotChartWidths(pivotComp);

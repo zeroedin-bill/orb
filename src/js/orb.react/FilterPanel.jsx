@@ -1,11 +1,18 @@
 
 
-/* global module, react, React */
+/* global module, react */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
-module.exports.FilterPanel = react.createClass({
+var React = require('react'),
+	ReactDOM = require('react-dom'),
+	utils = require('../orb.utils'),
+	Dropdown = require('./Dropdown'),
+	filtering = require('../orb.filtering'),
+	domUtils = require('../orb.utils.dom');
+
+module.exports = React.createClass({
 	pgridwidget: null,
 	values: null,
 	filterManager: null,
@@ -64,7 +71,6 @@ module.exports.FilterPanel = react.createClass({
 		utils.removeEventListener(window, 'resize', this.destroy);
 	},
 	render: function () {
-		var Dropdown = comps.Dropdown;
 		var checkboxes = [];
 
 		this.filterManager = new FilterManager(this, this.pgridwidget.pgrid.getFieldFilter(this.props.field));

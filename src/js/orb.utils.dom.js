@@ -1,7 +1,7 @@
 /* global module, require, window, document */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
 module.exports.forEach = function(list, func, defStop) {
 	var ret;

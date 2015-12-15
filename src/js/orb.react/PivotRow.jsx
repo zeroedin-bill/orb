@@ -1,14 +1,17 @@
 
 
-/* global module, require, React */
+/* global module, require */
 
-'use strict';
+"use strict";
 
+var React = require('react'),
+    ReactDOM = require('react-dom'),
+    axe = require('../orb.axe'),
+    PivotCell = require('./PivotCell');
 
-module.exports.PivotRow = react.createClass({
+module.exports = React.createClass({
   render: function() {
     var self = this;
-    var PivotCell = comps.PivotCell;
     
     var lastCellIndex = this.props.row.length - 1;
     var cell0 = this.props.row[0];

@@ -1,14 +1,18 @@
 
 
-/* global module, require, React */
+/* global module, require */
 
-'use strict';
+"use strict";
 
-module.exports.PivotTableColumnButtons = react.createClass({
+var React = require('react'),
+    ReactDOM = require('react-dom'),
+    axe = require('../orb.axe'),
+    PivotButton = require('./PivotButton'),
+    DropTarget = require('./DropTarget');
+
+module.exports = React.createClass({
   render: function() {
     var self = this;
-    var PivotButton = comps.PivotButton;
-    var DropTarget = comps.DropTarget;
 
     var config = this.props.pivotTableComp.pgridwidget.pgrid.config;
 

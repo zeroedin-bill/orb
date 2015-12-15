@@ -1,13 +1,18 @@
 
 
-/* global module, require, react */
+/* global module, require */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
+
+var React = require('react'),
+    ReactDOM = require('react-dom');
+var dragManager = require('./DragManager');
+var DropIndicator = require('./DropIndicator');
 
 var dtid = 0;
 
-module.exports.DropTargetVertical = react.createClass({
+module.exports = React.createClass({
 	getInitialState: function () {
 		this.dtid = ++dtid;
 		return {
@@ -40,17 +45,16 @@ module.exports.DropTargetVertical = react.createClass({
 	},
 	render: function() {	
 		var self = this;
-		var DropIndicator = module.exports.DropIndicator;
 
 		var buttons = this.props.buttons.map(function(button, index) {			
 			var currButton = [
-					<tr><td><DropIndicator isFirst={index === 0} position={index} axetype={self.props.axetype} isVertical={true}></DropIndicator></td></tr>,
+					<tr><td><DropIndicator isFirst={index === 0} position={index} axetype={self.props.axetype} isVertical={true} /></td></tr>,
 					<tr><td>{ button }</td></tr>
 				];
 
 			if(index == self.props.buttons.length - 1) {
 				currButton.push(
-					<tr><td><DropIndicator isLast={true} position={null} axetype={self.props.axetype} isVertical={true}></DropIndicator></td></tr>
+					<tr><td><DropIndicator isLast={true} position={null} axetype={self.props.axetype} isVertical={true} /></td></tr>
 				);
 			}
 

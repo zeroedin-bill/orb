@@ -1,9 +1,12 @@
-/* global module, require, react, domUtils */
+/* global module, require */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
-var dragManager = module.exports.DragManager = (function() {
+var domUtils = require('../orb.utils.dom'),
+	ReactDOM = require('react-dom');
+
+var dragManager = module.exports = (function() {
 	
 	var _pivotComp = null;
 	

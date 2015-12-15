@@ -1,13 +1,17 @@
 
 
-/* global module, require, React */
+/* global module, require */
 
-'use strict';
+"use strict";
 
-module.exports.PivotTableColumnHeaders = react.createClass({
+var React = require('react'),
+    ReactDOM = require('react-dom'),
+    axe = require('../orb.axe'),
+    PivotRow = require('./PivotRow');
+
+module.exports = React.createClass({
   render: function() {
     var self = this;
-    var PivotRow = comps.PivotRow;
     var pgridwidget = this.props.pivotTableComp.pgridwidget;
     var cntrClass = pgridwidget.columns.headers.length === 0 ? '' : ' columns-cntr';
 

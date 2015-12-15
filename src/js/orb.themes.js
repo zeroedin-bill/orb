@@ -1,7 +1,7 @@
 /* global module */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
 module.exports = (function() {
 

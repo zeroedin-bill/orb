@@ -1,10 +1,13 @@
 
 
-/* global module, require, React */
+/* global module, require, google */
 
-'use strict';
+"use strict";
 
-module.exports.Chart = react.createClass({
+var React = require('react'),
+    ReactDOM = require('react-dom');
+
+module.exports = React.createClass({
   getInitialState: function() {
     return {
       canRender: false

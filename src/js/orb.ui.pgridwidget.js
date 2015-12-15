@@ -3,9 +3,9 @@
  * @author Najmeddine Nouri <najmno@gmail.com>
  */
 
-'use strict';
+"use strict";
 
-/* global module, require, React, ReactDOM, window */
+/* global module, window */
 /*jshint eqnull: true*/
 
 var axe = require('./orb.axe');
@@ -14,7 +14,9 @@ var uiheaders = require('./orb.ui.header');
 var uirows = require('./orb.ui.rows');
 var uicols = require('./orb.ui.cols');
 var domUtils = require('./orb.utils.dom');
-var OrbReactComps = require('./react/orb.react.compiled');
+var OrbReactComps = require('./orb.react');
+var React = require('react');
+var ReactDOM = require('react-dom');
 /**
  * Creates a new instance of pivot grid control
  * @class

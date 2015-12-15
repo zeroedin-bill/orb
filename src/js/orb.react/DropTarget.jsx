@@ -1,13 +1,20 @@
 
 
-/* global module, require, react */
+/* global module, require */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
+
+var React = require('react'),
+	ReactDOM = require('react-dom'),
+	DragManager = require('./DragManager'),
+	axe = require('../orb.axe'),
+	DropIndicator = require('./DropIndicator');
 
 var dtid = 0;
 
-module.exports.DropTarget = react.createClass({
+var DropTarget = React.createClass({
+	displayName: "DropTarget",
 	getInitialState: function () {
 		this.dtid = ++dtid;
 		return {
@@ -15,10 +22,10 @@ module.exports.DropTarget = react.createClass({
 		};
 	},
   	componentDidMount: function() {
-  		dragManager.registerTarget(this, this.props.axetype, this.onDragOver, this.onDragEnd);
+		DragManager.registerTarget(this, this.props.axetype, this.onDragOver, this.onDragEnd);
   	},
 	componentWillUnmount : function() {
-		dragManager.unregisterTarget(this);
+		DragManager.unregisterTarget(this);
 	},
 	onDragOver: function(callback) {
 		if(this.isMounted()) {
@@ -40,19 +47,18 @@ module.exports.DropTarget = react.createClass({
 	},
 	render: function() {	
 		var self = this;
-		var DropIndicator = module.exports.DropIndicator;
 
 		var buttons = this.props.buttons.map(function(button, index) {			
 			if(index < self.props.buttons.length - 1) {
 				return [
-					<td><DropIndicator isFirst={index === 0} position={index} axetype={self.props.axetype}></DropIndicator></td>,
+					<td><DropIndicator isFirst={index === 0} position={index} axetype={self.props.axetype} /></td>,
 					<td>{ button }</td>
 				];
 			} else {
 				return [
-					<td><DropIndicator isFirst={index === 0} position={index} axetype={self.props.axetype}></DropIndicator></td>,
+					<td><DropIndicator isFirst={index === 0} position={index} axetype={self.props.axetype} /></td>,
 					<td>{ button }</td>,
-					<td><DropIndicator isLast={true} position={null} axetype={self.props.axetype}></DropIndicator></td>
+					<td><DropIndicator isLast={true} position={null} axetype={self.props.axetype} /></td>
 				];
 			}
 		});
@@ -70,3 +76,5 @@ module.exports.DropTarget = react.createClass({
 		</div>;
 	}
 });
+
+module.exports = DropTarget;

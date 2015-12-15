@@ -3,7 +3,7 @@
  * @author Najmeddine Nouri <najmno@gmail.com>
  */
 
-'use strict';
+"use strict";
 
 /* global module */
 /*jshint eqnull: true*/

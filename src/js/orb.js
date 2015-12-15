@@ -24,10 +24,12 @@
 /* global module, require */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
-module.exports.utils = require('./orb.utils');
-module.exports.pgrid = require('./orb.pgrid');
-module.exports.pgridwidget = require('./orb.ui.pgridwidget');
-module.exports.query = require('./orb.query');
-module.exports['export'] = require('./orb.export.excel');
+module.exports = {
+    utils: require('./orb.utils'),
+    pgrid: require('./orb.pgrid'),
+    pgridwidget: require('./orb.ui.pgridwidget'),
+    query: require('./orb.query'),
+    "export": require('./orb.export.excel')
+};

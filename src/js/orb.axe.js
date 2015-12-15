@@ -6,7 +6,7 @@
 /* global module, require */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
 var utils = require('./orb.utils');
 var Dimension = require('./orb.dimension');

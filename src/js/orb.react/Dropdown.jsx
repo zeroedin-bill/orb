@@ -1,11 +1,15 @@
 
 
-/* global module, react, React */
+/* global module, require */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
-module.exports.Dropdown = react.createClass({
+var React = require('react'),
+	ReactDOM = require('react-dom'),
+	utils = require('../orb.utils');
+
+module.exports = React.createClass({
 	openOrClose: function(e) {
 		var valueNode = this.refs.valueElement;
 		var valuesListNode = this.refs.valuesList;

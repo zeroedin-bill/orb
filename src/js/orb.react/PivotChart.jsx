@@ -1,19 +1,30 @@
 
 
-/* global module, require, React */
+/* global module, require */
 
-'use strict';
+"use strict";
+
+var React = require('react'),
+    domUtils = require('../orb.utils.dom'),
+    ReactDOM = require('react-dom'),
+    DragManager = require('./DragManager'),
+    SizingManager = require('./PivotTable.SizingManager'),
+    Toolbar = require('./Toolbar'),
+    UpperButtons = require('./PivotTable.UpperButtons'),
+    ColumnButtons = require('./PivotTable.ColumnButtons'),
+    RowButtons = require('./PivotTable.RowButtons'),
+    Chart = require('./Chart');
 
 var pivotId = 1;
 var themeChangeCallbacks = {};
 
-module.exports.PivotChart = react.createClass({
+module.exports = React.createClass({
   id: pivotId++,
   pgrid: null,
   pgridwidget: null,
   fontStyle: null,
   getInitialState: function() {
-    comps.DragManager.init(this);
+    DragManager.init(this);
     
     themeChangeCallbacks[this.id] = [];
     this.registerThemeChanged(this.updateClasses);
@@ -73,7 +84,7 @@ module.exports.PivotChart = react.createClass({
     this.synchronizeWidths();
   },
   synchronizeWidths: function() {
-    var chartStyle = comps.SizingManager.synchronizeWidths(this);
+    var chartStyle = SizingManager.synchronizeWidths(this);
     chartStyle.fontFamily = this.fontStyle.fontFamily;
     chartStyle.fontSize = this.fontStyle.fontSize;
 
@@ -87,11 +98,6 @@ module.exports.PivotChart = react.createClass({
     var self = this;
 
     var config = this.pgridwidget.pgrid.config;
-    var Toolbar = comps.Toolbar;
-    var UpperButtons = comps.PivotTableUpperButtons;
-    var ColumnButtons = comps.PivotTableColumnButtons;
-    var RowButtons = comps.PivotTableRowButtons;
-    var Chart = comps.Chart;
 
     var classes = config.theme.getPivotClasses();    
 

@@ -1,7 +1,7 @@
 /* global module, require, React, window */
 /*jshint node: true*/
 
-'use strict';
+"use strict";
 
 var react = typeof window === 'undefined' ? require('react') : window.React;
 var utils = require('../orb.utils');
@@ -16,7 +16,7 @@ var comps = module.exports;
 
 /* global module, require, React */
 
-'use strict';
+"use strict";
 
 var pivotId = 1;
 var themeChangeCallbacks = {};
@@ -333,7 +333,7 @@ module.exports.PivotTable = react.createClass({
 
 /* global module, require, React */
 
-'use strict';
+"use strict";
 
 var pivotId = 1;
 var themeChangeCallbacks = {};
@@ -521,7 +521,7 @@ module.exports.PivotChart = react.createClass({
 
 /* global module, require, React */
 
-'use strict';
+"use strict";
 
 module.exports.PivotRow = react.createClass({
     render: function render() {
@@ -589,7 +589,7 @@ module.exports.PivotRow = react.createClass({
 /* global module, require, React */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
 var _paddingLeft = null;
 var _borderLeft = null;
@@ -808,7 +808,7 @@ function getClassname(compProps) {
 /* global module, require, react, domUtils */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
 var dragManager = module.exports.DragManager = (function() {
 
@@ -1006,7 +1006,7 @@ var dragManager = module.exports.DragManager = (function() {
 /* global module, require, react */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
 module.exports.DropIndicator = react.createClass({
     displayName: 'DropIndicator',
@@ -1064,7 +1064,7 @@ module.exports.DropIndicator = react.createClass({
 /* global module, require, react */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
 var dtid = 0;
 
@@ -1175,7 +1175,7 @@ module.exports.DropTarget = react.createClass({
 /* global module, require, react */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
 var dtid = 0;
 
@@ -1279,7 +1279,7 @@ module.exports.DropTargetVertical = react.createClass({
 /* global module, require, react */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
 var pbid = 0;
 
@@ -1508,7 +1508,7 @@ module.exports.PivotButton = react.createClass({
 
 /* global module, require, React */
 
-'use strict';
+"use strict";
 
 module.exports.PivotTableUpperButtons = react.createClass({
     render: function render() {
@@ -1607,7 +1607,7 @@ module.exports.PivotTableUpperButtons = react.createClass({
 
 /* global module, require, React */
 
-'use strict';
+"use strict";
 
 module.exports.PivotTableColumnButtons = react.createClass({
     render: function render() {
@@ -1637,7 +1637,7 @@ module.exports.PivotTableColumnButtons = react.createClass({
 
 /* global module, require, React */
 
-'use strict';
+"use strict";
 
 module.exports.PivotTableRowButtons = react.createClass({
     render: function render() {
@@ -1675,7 +1675,7 @@ module.exports.PivotTableRowButtons = react.createClass({
 
 /* global module, require, React */
 
-'use strict';
+"use strict";
 
 module.exports.PivotTableColumnHeaders = react.createClass({
     render: function render() {
@@ -1722,7 +1722,7 @@ module.exports.PivotTableColumnHeaders = react.createClass({
 
 /* global module, require, React */
 
-'use strict';
+"use strict";
 
 module.exports.PivotTableRowHeaders = react.createClass({
     setColGroup: function setColGroup(widths) {
@@ -1784,7 +1784,7 @@ module.exports.PivotTableRowHeaders = react.createClass({
 
 /* global module, require, React */
 
-'use strict';
+"use strict";
 
 module.exports.PivotTableDataCells = react.createClass({
     render: function render() {
@@ -1831,7 +1831,7 @@ module.exports.PivotTableDataCells = react.createClass({
 /* global module, require, React, react, domUtils, document */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
 var scrollBarMixin = {
     scrollEvent: null,
@@ -2027,7 +2027,7 @@ module.exports.VerticalScrollBar = react.createClass({
 
 /* global module, require, React */
 
-'use strict';
+"use strict";
 
 module.exports.Chart = react.createClass({
     getInitialState: function getInitialState() {
@@ -2090,7 +2090,7 @@ module.exports.Chart = react.createClass({
 /* global module, react, React */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
 module.exports.FilterPanel = react.createClass({
     pgridwidget: null,
@@ -2700,7 +2700,7 @@ function FilterManager(reactComp, initialFilterObject) {
 /* global module, react, React */
 /*jshint eqnull: true*/
 
-'use strict';
+"use strict";
 
 module.exports.Dropdown = react.createClass({
     openOrClose: function openOrClose(e) {
@@ -2797,7 +2797,7 @@ module.exports.Dropdown = react.createClass({
 
 /* global module, require, React */
 
-'use strict';
+"use strict";
 
 module.exports.Grid = react.createClass({
     render: function render() {
@@ -2874,7 +2874,7 @@ module.exports.Grid = react.createClass({
 
 /* global module, require, React */
 
-'use strict';
+"use strict";
 
 function createOverlay() {
     var overlayElement = document.createElement('div');
@@ -2974,7 +2974,7 @@ var Dialog = module.exports.Dialog = react.createClass({
 /* global module, require, react */
 /*jshint node: true, eqnull: true*/
 
-'use strict';
+"use strict";
 
 module.exports.Toolbar = react.createClass({
     _toInit: [],
@@ -3201,7 +3201,7 @@ defaultToolbarConfig.buttons = [{
 
 /* global module, domUtils */
 
-'use strict';
+"use strict";
 
 var SizingManager = module.exports.SizingManager = {
     synchronizeWidths: function synchronizeWidths(pivotComp) {

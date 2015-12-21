@@ -39,8 +39,8 @@ function mergefieldconfigs() {
         merged.subtotals.push(nnconfig.subTotal || {});
         merged.functions.push({
             aggregateFuncName: nnconfig.aggregateFuncName,
-            aggregateFunc: i === 0 ? nnconfig.aggregateFunc : (nnconfig.aggregateFunc ? nnconfig.aggregateFunc() : null),
-            formatFunc: i === 0 ? nnconfig.formatFunc : (nnconfig.formatFunc ? nnconfig.formatFunc() : null)
+            aggregateFunc: i === 0 ? nnconfig.aggregateFunc : (nnconfig.aggregateFunc ? nnconfig.aggregateFunc : null),
+            formatFunc: i === 0 ? nnconfig.formatFunc : (nnconfig.formatFunc ? nnconfig.formatFunc : null)
         });
     }
 
@@ -136,9 +136,39 @@ function ChartConfig(options) {
     this.type = options.type || 'LineChart';    
 }
 
+function defaultFormatFunc(val) {
+    return val != null ? val.toString() : '';
+}
+
 var Field = module.exports.field = function(options, createSubOptions) {
 
     options = options || {};
+    Object.defineProperties(this, {
+        '_aggregateFunc': {
+            writable: true,
+            enumerable: false
+        },
+        'aggregateFunc': {
+            get: function () {
+                return this._aggregateFunc;
+            },
+            set: function (func) {
+                this._aggregateFunc = typeof func === 'function' ? func : (typeof func === 'string' ? aggregation.toAggregateFunc(func) : null);
+            }
+        },
+        '_formatFunc': {
+            writable: true,
+            enumerable: false
+        },
+        'formatFunc': {
+            get: function () {
+                return this._formatFunc;
+            },
+            set: function (func) {
+                this.func = typeof func === 'function' ? func : undefined;
+            }
+        }
+    });
 
     // field name
     this.name = options.name;
@@ -150,30 +180,6 @@ var Field = module.exports.field = function(options, createSubOptions) {
     this.sort = new SortConfig(options.sort);
     this.subTotal = new SubTotalConfig(options.subTotal);
 
-    // data settings
-    var _aggregatefunc;
-    var _formatfunc;
-
-    function defaultFormatFunc(val) {   
-        return val != null ? val.toString() : '';
-    }
-
-    this.aggregateFunc = function(func) {
-        if (func) {
-            _aggregatefunc = aggregation.toAggregateFunc(func);
-        } else {
-            return _aggregatefunc;
-        }
-    };
-
-    this.formatFunc = function(func) {
-        if (func) {
-            _formatfunc = func;
-        } else {
-            return _formatfunc;
-        }
-    };
-
     this.aggregateFuncName = options.aggregateFuncName || 
         (options.aggregateFunc ?
             (utils.isString(options.aggregateFunc) ?
@@ -181,8 +187,8 @@ var Field = module.exports.field = function(options, createSubOptions) {
                 'custom') :
             null);
 
-    this.aggregateFunc(options.aggregateFunc);
-    this.formatFunc(options.formatFunc || defaultFormatFunc);
+    this.aggregateFunc = options.aggregateFunc;
+    this.formatFunc = options.formatFunc || defaultFormatFunc;
 
     if (createSubOptions !== false) {
         (this.rowSettings = new Field(options.rowSettings, false)).name = this.name;
@@ -190,6 +196,8 @@ var Field = module.exports.field = function(options, createSubOptions) {
         (this.dataSettings = new Field(options.dataSettings, false)).name = this.name;
     }
 };
+
+
 
 /**
  * Creates a new instance of pgrid config

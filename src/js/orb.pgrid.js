@@ -250,10 +250,10 @@ module.exports = function(config) {
                         if(!datafield) {
                             datafield = self.config.getField(fieldNames[fieldnameIndex]);
                             if(datafield) {
-                                aggregateFunc = datafield.dataSettings ? datafield.dataSettings.aggregateFunc() : datafield.aggregateFunc();
+                                aggregateFunc = datafield.dataSettings ? datafield.dataSettings.aggregateFunc : datafield.aggregateFunc;
                             }
                         } else {
-                            aggregateFunc = datafield.aggregateFunc();
+                            aggregateFunc = datafield.aggregateFunc;
                         }
                     }
 
@@ -265,7 +265,7 @@ module.exports = function(config) {
                 for (var datafieldIndex = 0; datafieldIndex < self.config.dataFieldsCount; datafieldIndex++) {
                     datafield = self.config.dataFields[datafieldIndex] || defaultfield;
                     if (aggregateFunc || datafield.aggregateFunc) {
-                        datafields.push({ field: datafield, aggregateFunc: aggregateFunc || datafield.aggregateFunc()});
+                        datafields.push({ field: datafield, aggregateFunc: aggregateFunc || datafield.aggregateFunc});
                     }
                 }
             }

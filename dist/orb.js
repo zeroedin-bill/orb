@@ -584,10 +584,10 @@ var orb =
 	                        if (!datafield) {
 	                            datafield = self.config.getField(fieldNames[fieldnameIndex]);
 	                            if (datafield) {
-	                                aggregateFunc = datafield.dataSettings ? datafield.dataSettings.aggregateFunc() : datafield.aggregateFunc();
+	                                aggregateFunc = datafield.dataSettings ? datafield.dataSettings.aggregateFunc : datafield.aggregateFunc;
 	                            }
 	                        } else {
-	                            aggregateFunc = datafield.aggregateFunc();
+	                            aggregateFunc = datafield.aggregateFunc;
 	                        }
 	                    }
 	
@@ -599,7 +599,7 @@ var orb =
 	                for (var datafieldIndex = 0; datafieldIndex < self.config.dataFieldsCount; datafieldIndex++) {
 	                    datafield = self.config.dataFields[datafieldIndex] || defaultfield;
 	                    if (aggregateFunc || datafield.aggregateFunc) {
-	                        datafields.push({ field: datafield, aggregateFunc: aggregateFunc || datafield.aggregateFunc() });
+	                        datafields.push({ field: datafield, aggregateFunc: aggregateFunc || datafield.aggregateFunc });
 	                    }
 	                }
 	            }
@@ -1023,6 +1023,11 @@ var orb =
 	function getpropertyvalue(property, configs, defaultvalue) {
 	    for (var i = 0; i < configs.length; i++) {
 	        if (configs[i][property] != null) {
+	            /*if (property.match(/(formatFunc|aggregateFunc)/)
+	              && typeof configs[i][property] === 'function'
+	              && typeof configs[i][]) {
+	                return configs[i][property]();
+	            }*/
 	            return configs[i][property];
 	        }
 	    }
@@ -1045,8 +1050,8 @@ var orb =
 	        merged.subtotals.push(nnconfig.subTotal || {});
 	        merged.functions.push({
 	            aggregateFuncName: nnconfig.aggregateFuncName,
-	            aggregateFunc: i === 0 ? nnconfig.aggregateFunc : nnconfig.aggregateFunc ? nnconfig.aggregateFunc() : null,
-	            formatFunc: i === 0 ? nnconfig.formatFunc : nnconfig.formatFunc ? nnconfig.formatFunc() : null
+	            aggregateFunc: i === 0 ? nnconfig.aggregateFunc : nnconfig.aggregateFunc ? nnconfig.aggregateFunc : null,
+	            formatFunc: i === 0 ? nnconfig.formatFunc : nnconfig.formatFunc ? nnconfig.formatFunc : null
 	        });
 	    }
 	
@@ -1142,9 +1147,39 @@ var orb =
 	    this.type = options.type || 'LineChart';
 	}
 	
+	function defaultFormatFunc(val) {
+	    return val != null ? val.toString() : '';
+	}
+	
 	var Field = module.exports.field = function (options, createSubOptions) {
 	
 	    options = options || {};
+	    Object.defineProperties(this, {
+	        '_aggregateFunc': {
+	            writable: true,
+	            enumerable: false
+	        },
+	        'aggregateFunc': {
+	            get: function get() {
+	                return this._aggregateFunc;
+	            },
+	            set: function set(func) {
+	                this._aggregateFunc = typeof func === 'function' ? func : typeof func === 'string' ? aggregation.toAggregateFunc(func) : null;
+	            }
+	        },
+	        '_formatFunc': {
+	            writable: true,
+	            enumerable: false
+	        },
+	        'formatFunc': {
+	            get: function get() {
+	                return this._formatFunc;
+	            },
+	            set: function set(func) {
+	                this.func = typeof func === 'function' ? func : undefined;
+	            }
+	        }
+	    });
 	
 	    // field name
 	    this.name = options.name;
@@ -1156,34 +1191,10 @@ var orb =
 	    this.sort = new SortConfig(options.sort);
 	    this.subTotal = new SubTotalConfig(options.subTotal);
 	
-	    // data settings
-	    var _aggregatefunc;
-	    var _formatfunc;
-	
-	    function defaultFormatFunc(val) {
-	        return val != null ? val.toString() : '';
-	    }
-	
-	    this.aggregateFunc = function (func) {
-	        if (func) {
-	            _aggregatefunc = aggregation.toAggregateFunc(func);
-	        } else {
-	            return _aggregatefunc;
-	        }
-	    };
-	
-	    this.formatFunc = function (func) {
-	        if (func) {
-	            _formatfunc = func;
-	        } else {
-	            return _formatfunc;
-	        }
-	    };
-	
 	    this.aggregateFuncName = options.aggregateFuncName || (options.aggregateFunc ? utils.isString(options.aggregateFunc) ? options.aggregateFunc : 'custom' : null);
 	
-	    this.aggregateFunc(options.aggregateFunc);
-	    this.formatFunc(options.formatFunc || defaultFormatFunc);
+	    this.aggregateFunc = options.aggregateFunc;
+	    this.formatFunc = options.formatFunc || defaultFormatFunc;
 	
 	    if (createSubOptions !== false) {
 	        (this.rowSettings = new Field(options.rowSettings, false)).name = this.name;

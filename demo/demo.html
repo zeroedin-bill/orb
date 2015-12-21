@@ -59,40 +59,25 @@
         dataHeadersLocation: 'columns',
         width: 1099,
         height: 611,
-        theme: 'bootstrap',
+        theme: 'blue',
         toolbar: {
             visible: true
         },
         grandTotal: {
-            rowsvisible: false,
-            columnsvisible: false
+            rowsvisible: true,
+            columnsvisible: true
         },
         subTotal: {
             visible: true,
             collapsed: true,
             collapsible: true
         },
-        rowSettings: {
-            subTotal: {
-                visible: true,
-                collapsed: true,
-                collapsible: true
-            }
-        },
-        columnSettings: {
-            subTotal: {
-                visible: false,
-                collapsed: true,
-                collapsible: true
-            }
-        },
         fields: [
             {
                 name: '6',
                 caption: 'Amount',
                 dataSettings: {
-                    aggregateFunc: 'sum',
-                    aggregateFuncName: 'whatever',
+                    aggregateFunc: 'avg',
                     formatFunc: function(value) {
                         return value ? Number(value).toFixed(0) + ' $' : '';
                     }
@@ -104,21 +89,14 @@
             },
             {
                 name: '1',
-                caption: 'Product',
+                caption: 'Product'
             },
             {
                 name: '2',
                 caption: 'Manufacturer',
                 sort: {
                     order: 'asc'
-                },
-                rowSettings: {
-                    subTotal: {
-                        visible: false,
-                        collapsed: true,
-                        collapsible: true
-                    }
-                },
+                }
             },
             {
                 name: '3',
@@ -144,9 +122,9 @@
                 aggregateFunc: 'sum'
             }
         ],
-        rows    : [ 'Manufacturer'],//, 'Category' ],
-        columns : [ 'Class', 'Category' ],
-        data    : [ 'Quantity', 'Amount' ],
+        rows    : [ 'Manufacturer', 'Category' ],
+        columns : [ 'Class' ],
+        data    : [ 'Quantity', 'Amount' ]
         /*preFilters : {
             'Class': { 'Matches': 'Regular' },
             'Manufacturer': { 'Matches': /^a|^c/ },

@@ -165,7 +165,7 @@ var Field = module.exports.field = function(options, createSubOptions) {
                 return this._formatFunc;
             },
             set: function (func) {
-                this.func = typeof func === 'function' ? func : undefined;
+                this._formatFunc = typeof func === 'function' ? func : undefined;
             }
         }
     });

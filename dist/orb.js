@@ -1023,11 +1023,6 @@ var orb =
 	function getpropertyvalue(property, configs, defaultvalue) {
 	    for (var i = 0; i < configs.length; i++) {
 	        if (configs[i][property] != null) {
-	            /*if (property.match(/(formatFunc|aggregateFunc)/)
-	              && typeof configs[i][property] === 'function'
-	              && typeof configs[i][]) {
-	                return configs[i][property]();
-	            }*/
 	            return configs[i][property];
 	        }
 	    }
@@ -1176,7 +1171,7 @@ var orb =
 	                return this._formatFunc;
 	            },
 	            set: function set(func) {
-	                this.func = typeof func === 'function' ? func : undefined;
+	                this._formatFunc = typeof func === 'function' ? func : undefined;
 	            }
 	        }
 	    });

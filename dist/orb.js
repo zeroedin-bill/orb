@@ -24822,7 +24822,7 @@ var orb =
 	        value = cell.value.caption;
 	        break;
 	      case 'cell-template-datavalue':
-	        value = cell.datafield && cell.datafield.formatFunc ? cell.datafield.formatFunc()(cell.value) : cell.value;
+	        value = cell.datafield && cell.datafield.formatFunc ? cell.datafield.formatFunc(cell.value) : cell.value;
 	        cellClick = function () {
 	          self.props.pivotTableComp.pgridwidget.drilldown(cell, self.props.pivotTableComp.id);
 	        };
@@ -25659,7 +25659,7 @@ var orb =
 	      var dataRow = pgridwidget.dataRows[i];
 	      rowStr += dataRow.reduce(function (tr, dataCell, index) {
 	        var formatFunc = config.dataFields[index = index % config.dataFields.length].formatFunc;
-	        var value = dataCell.value == null ? '' : formatFunc ? formatFunc()(dataCell.value) : dataCell.value;
+	        var value = dataCell.value == null ? '' : formatFunc ? formatFunc(dataCell.value) : dataCell.value;
 	        return tr += '<td>' + value + '</td>';
 	      }, '');
 	      str += rowStr + '</tr>';

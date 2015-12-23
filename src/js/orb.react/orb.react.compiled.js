@@ -724,7 +724,7 @@ module.exports.PivotCell = react.createClass({
                 value = cell.value.caption;
                 break;
             case 'cell-template-datavalue':
-                value = cell.datafield && cell.datafield.formatFunc ? cell.datafield.formatFunc()(cell.value) : cell.value;
+                value = cell.datafield && cell.datafield.formatFunc ? cell.datafield.formatFunc(cell.value) : cell.value;
                 cellClick = function() {
                     self.props.pivotTableComp.pgridwidget.drilldown(cell, self.props.pivotTableComp.id);
                 };

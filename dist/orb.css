@@ -146,6 +146,7 @@
 .orb-red .orb .fld-btn:hover{background-color:#d76b7e;background-color:rgba(199,44,72,.7)}
 .orb-red .orb .fld-btn:hover .fltr-btn{background-color:#c72c48}
 .orb-red .orb .fld-btn .fltr-btn-active,.orb-red .orb .fld-btn .fltr-btn:hover{background-color:#d76b7e}
+.orb-red .orb .fld-btn span{white-space:nowrap}
 .orb-red .orb .drp-trgt{height:27px}
 .orb-red .orb .drp-trgt-over{background-color:#fcf4f5}
 .orb-red .orb .drp-trgt-empty,.orb-red .orb .drp-trgt-vertical-empty{border:1px dashed #e395a3}
@@ -195,6 +196,7 @@
 .orb-blue .orb .fld-btn:hover{background-color:#8cd2e7;background-color:rgba(91,192,222,.7)}
 .orb-blue .orb .fld-btn:hover .fltr-btn{background-color:#5bc0de}
 .orb-blue .orb .fld-btn .fltr-btn-active,.orb-blue .orb .fld-btn .fltr-btn:hover{background-color:#8cd2e7}
+.orb-blue .orb .fld-btn span{white-space:nowrap}
 .orb-blue .orb .drp-trgt{height:27px}
 .orb-blue .orb .drp-trgt-over{background-color:#f6fbfd}
 .orb-blue .orb .drp-trgt-empty,.orb-blue .orb .drp-trgt-vertical-empty{border:1px dashed #addfee}
@@ -244,6 +246,7 @@
 .orb-green .orb .fld-btn:hover{background-color:#78cb5d;background-color:rgba(63,182,24,.7)}
 .orb-green .orb .fld-btn:hover .fltr-btn{background-color:#3fb618}
 .orb-green .orb .fld-btn .fltr-btn-active,.orb-green .orb .fld-btn .fltr-btn:hover{background-color:#78cb5d}
+.orb-green .orb .fld-btn span{white-space:nowrap}
 .orb-green .orb .drp-trgt{height:27px}
 .orb-green .orb .drp-trgt-over{background-color:#f5fbf3}
 .orb-green .orb .drp-trgt-empty,.orb-green .orb .drp-trgt-vertical-empty{border:1px dashed #9fda8b}
@@ -293,6 +296,7 @@
 .orb-orange .orb .fld-btn:hover{background-color:#e8965e;background-color:rgba(223,105,26,.7)}
 .orb-orange .orb .fld-btn:hover .fltr-btn{background-color:#df691a}
 .orb-orange .orb .fld-btn .fltr-btn-active,.orb-orange .orb .fld-btn .fltr-btn:hover{background-color:#e8965e}
+.orb-orange .orb .fld-btn span{white-space:nowrap}
 .orb-orange .orb .drp-trgt{height:27px}
 .orb-orange .orb .drp-trgt-over{background-color:#fdf7f3}
 .orb-orange .orb .drp-trgt-empty,.orb-orange .orb .drp-trgt-vertical-empty{border:1px dashed #efb48c}
@@ -342,6 +346,7 @@
 .orb-flower .orb .fld-btn:hover{background-color:#c180d7;background-color:rgba(167,74,199,.7)}
 .orb-flower .orb .fld-btn:hover .fltr-btn{background-color:#a74ac7}
 .orb-flower .orb .fld-btn .fltr-btn-active,.orb-flower .orb .fld-btn .fltr-btn:hover{background-color:#c180d7}
+.orb-flower .orb .fld-btn span{white-space:nowrap}
 .orb-flower .orb .drp-trgt{height:27px}
 .orb-flower .orb .drp-trgt-over{background-color:#faf5fc}
 .orb-flower .orb .drp-trgt-empty,.orb-flower .orb .drp-trgt-vertical-empty{border:1px dashed #d3a4e3}
@@ -391,6 +396,7 @@
 .orb-gray .orb .fld-btn:hover{background-color:#a6a6a6;background-color:rgba(128,128,128,.7)}
 .orb-gray .orb .fld-btn:hover .fltr-btn{background-color:grey}
 .orb-gray .orb .fld-btn .fltr-btn-active,.orb-gray .orb .fld-btn .fltr-btn:hover{background-color:#a6a6a6}
+.orb-gray .orb .fld-btn span{white-space:nowrap}
 .orb-gray .orb .drp-trgt{height:27px}
 .orb-gray .orb .drp-trgt-over{background-color:#f8f8f8}
 .orb-gray .orb .drp-trgt-empty,.orb-gray .orb .drp-trgt-vertical-empty{border:1px dashed #bfbfbf}
@@ -440,6 +446,7 @@
 .orb-black .orb .fld-btn:hover{background-color:#4c4c4c;background-color:rgba(0,0,0,.7)}
 .orb-black .orb .fld-btn:hover .fltr-btn{background-color:#000}
 .orb-black .orb .fld-btn .fltr-btn-active,.orb-black .orb .fld-btn .fltr-btn:hover{background-color:#4c4c4c}
+.orb-black .orb .fld-btn span{white-space:nowrap}
 .orb-black .orb .drp-trgt{height:27px}
 .orb-black .orb .drp-trgt-over{background-color:#f2f2f2}
 .orb-black .orb .drp-trgt-empty,.orb-black .orb .drp-trgt-vertical-empty{border:1px dashed #7f7f7f}
@@ -489,6 +496,7 @@
 .orb-white .orb .fld-btn:hover{background-color:#fff;background-color:rgba(128,128,128,.1)}
 .orb-white .orb .fld-btn:hover .fltr-btn{background-color:#555}
 .orb-white .orb .fld-btn .fltr-btn-active,.orb-white .orb .fld-btn .fltr-btn:hover{background-color:#999}
+.orb-white .orb .fld-btn span{white-space:nowrap}
 .orb-white .orb .drp-trgt{height:27px}
 .orb-white .orb .drp-trgt-over{background-color:#fff}
 .orb-white .orb .drp-trgt-empty,.orb-white .orb .drp-trgt-vertical-empty{border:1px dashed #d9d9d9}

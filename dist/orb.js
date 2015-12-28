@@ -25111,7 +25111,9 @@ var orb =
 	  synchronizePivotTableWidths: function synchronizePivotTableWidths(pivotComp) {
 	
 	    var pivotWrapperTable = pivotComp.refs.pivotWrapperTable,
-	        pivot = new ComponentSizeInfo(pivotComp.refs.pivot),
+	
+	    //a = domUtils.updateTableColGroup(pivotWrapperTable, []),
+	    pivot = new ComponentSizeInfo(pivotComp.refs.pivot),
 	        toolbar = new ComponentSizeInfo(pivotComp.refs.toolbar),
 	        cHeadersTbl = new ComponentSizeInfo(pivotComp.refs.colHeaders, true, 'table'),
 	        rHeadersTbl = new ComponentSizeInfo(pivotComp.refs.rowHeaders, true, 'table'),
@@ -25287,91 +25289,6 @@ var orb =
 	      tblObject.w += item.width;
 	      return item.width;
 	    });
-	  }
-	}
-	
-	/**
-	 * Sets the width of all cells of a html table element
-	 * @param  {Object}  tblObject - object having a table element in its 'node' property
-	 * @param  {Array}  colWidths - an array of numeric values representing the width of each individual cell.
-	 *                                  Its length is equal to the greatest number of cells of all rows
-	 *                                  (in case of cells having colSpan/rowSpan greater than 1.)
-	 */
-	function setTableWidths(tblObject, colWidths) {
-	  if (tblObject && tblObject.node) {
-	
-	    // reset table width
-	    (tblObject.size = tblObject.size || {}).width = 0;
-	
-	    var tbl = tblObject.node;
-	
-	    // for each row, set its cells width
-	    for (var rowIndex = 0; rowIndex < tbl.rows.length; rowIndex++) {
-	
-	      // current row
-	      var currRow = tbl.rows[rowIndex];
-	      // index in colWidths
-	      var arrayIndex = 0;
-	      var currWidth = null;
-	
-	      // set width of each cell
-	      for (var cellIndex = 0; cellIndex < currRow.cells.length; cellIndex++) {
-	
-	        // current cell
-	        var currCell = currRow.cells[cellIndex];
-	        if (currCell.__orb._visible) {
-	          // cell width
-	          var newCellWidth = 0;
-	          // whether current cell spans vertically more than 1 row
-	          var rowsSpan = currCell.__orb._rowSpan > 1 && rowIndex < tbl.rows.length - 1;
-	
-	          // current cell width is the sum of (its) "colspan" items in colWidths starting at 'arrayIndex'
-	          // 'arrayIndex' should be incremented by an amount equal to current cell 'colspan' but should also skip 'inhibited' cells
-	          for (var cspan = 0; cspan < currCell.__orb._colSpan; cspan++) {
-	            currWidth = colWidths[arrayIndex];
-	            // skip inhibited widths (width that belongs to an upper cell than spans vertically to current row)
-	            while (currWidth && currWidth.inhibit > 0) {
-	              currWidth.inhibit--;
-	              arrayIndex++;
-	              currWidth = colWidths[arrayIndex];
-	            }
-	
-	            if (currWidth) {
-	              // add width of cells participating in the span
-	              newCellWidth += currWidth.width;
-	              // if current cell spans vertically more than 1 row, mark its width as inhibited for all cells participating in this span
-	              if (rowsSpan) {
-	                currWidth.inhibit = currCell.__orb._rowSpan - 1;
-	              }
-	
-	              // advance colWidths index
-	              arrayIndex++;
-	            }
-	          }
-	
-	          currCell.children[0].style.width = newCellWidth + 'px';
-	
-	          // set table width (only in first iteration)
-	          if (rowIndex === 0) {
-	            var outerCellWidth = 0;
-	            if (currCell.__orb) {
-	              outerCellWidth = currCell.__orb._colSpan * Math.ceil(currCell.__orb._paddingLeft + currCell.__orb._paddingRight + currCell.__orb._borderLeftWidth + currCell.__orb._borderRightWidth);
-	            }
-	            tblObject.w += newCellWidth + outerCellWidth;
-	          }
-	        }
-	      }
-	
-	      // decrement inhibited state of all widths unsed in colWidths (not reached by current row cells)
-	      currWidth = colWidths[arrayIndex];
-	      while (currWidth) {
-	        if (currWidth.inhibit > 0) {
-	          currWidth.inhibit--;
-	        }
-	        arrayIndex++;
-	        currWidth = colWidths[arrayIndex];
-	      }
-	    }
 	  }
 	}
 

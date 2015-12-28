@@ -37,6 +37,7 @@ var banner =
 
 var namelatest = 'orb';
 var distlatest = './dist/';
+var demoPath = './demo';
 
 function parseLessVars(obj, ret, prefix) {
     prefix = prefix || '';
@@ -114,6 +115,25 @@ gulp.task('webpack:build', function (cb) {
     webpack(config, webpackCb);
 });
 
+gulp.task('webpack:build-demo', ['webpack:build'], function(cb) {
+    var config = Object.create(webpackConfig);
+    config.output.path = path.join(demoPath, 'js');
+    config.output.filename = "demo.js";
+    delete config.output.libraryTarget;
+    config.entry = './src/js/entry/demo.js';
+    config.devtool = "source-map";
+    function webpackCb(err, stats) {
+        if (err) throw new gutil.PluginError("webpack:build", err);
+        // Write stats to build log
+        gutil.log("[webpack:build]", stats.toString({
+            colors: true
+        }));
+        cb();
+    }
+
+    webpack(config, webpackCb);
+});
+
 gulp.task('test', ['webpack:build'], function () {
     return gulp.src('test/spec/orb.query.js')
         .pipe(jasmine({
@@ -121,4 +141,4 @@ gulp.task('test', ['webpack:build'], function () {
         }));
 });
 
-gulp.task('default', ['test']);
+gulp.task('default', ['test', 'webpack:build-demo']);

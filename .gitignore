@@ -3,3 +3,5 @@ node_modules
 tmp
 .sublime*
 /.idea
+/demo/js/demo.js
+/demo/js/demo.js.map

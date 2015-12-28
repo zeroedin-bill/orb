@@ -5,9 +5,8 @@ var expected_amount = testdata.expected.amount;
 var expected_quantity = testdata.expected.quantity;
 var params = testdata.params;
 
-var orbpath = '../../src/js/';
-var utils = require(orbpath + 'orb.utils');
-var orb = require(orbpath + 'orb');
+var orbpath = '../../dist/';
+require(orbpath + 'orb');
 var pgrid = new orb.pgrid(testdata.pgridConfig);
 
 function expectToBeNumericCloseTo(actual, expected) {

@@ -106,7 +106,8 @@ var config = {
 var elem = document.getElementById('rr');
 
 var pgridwidget = new orb.pgridwidget(config);
-pgridwidget.render(elem);
+pgridwidget.renderTo(elem);
+pgridwidget.render();
 
 var croot = pgridwidget.pgrid.columns.root;
 var jsn = getSubVals(croot, {});

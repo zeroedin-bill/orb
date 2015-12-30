@@ -17,6 +17,7 @@ var less = require('gulp-less');
 var cleancss = require("gulp-minify-css");
 var jasmine = require('gulp-jasmine');
 var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
 var webpackConfig = require('./webpack.config.js');
 var path = require('path');
 var gutil = require('gulp-util');
@@ -37,7 +38,7 @@ var banner =
 
 var namelatest = 'orb';
 var distlatest = './dist/';
-var demoPath = './demo';
+var demoPath = path.join(__dirname, 'demo');
 
 function parseLessVars(obj, ret, prefix) {
     prefix = prefix || '';
@@ -132,6 +133,27 @@ gulp.task('webpack:build-demo', ['webpack:build'], function(cb) {
     }
 
     webpack(config, webpackCb);
+});
+
+gulp.task('webpack:demo', function(cb) {
+    var config = Object.create(webpackConfig);
+    config.output.path = demoPath;
+    config.output.filename = "demo.js";
+    delete config.output.libraryTarget;
+    delete config.output.library;
+    config.entry = './src/js/entry/demo.js';
+    config.devtool = "eval";
+    config.output.publicPath = "demo/";
+
+    new WebpackDevServer(webpack(config), {
+        publicPath: "/" + config.output.publicPath,
+        stats: {
+            colors: true
+        }
+    }).listen(8081, "localhost", function(err) {
+        if (err) throw new gutil.PluginError("webpack-dev-server", err);
+        gutil.log("[webpack-dev-server]", "http://localhost:8081/webpack-dev-server/index.html");
+    });
 });
 
 gulp.task('test', ['webpack:build'], function () {

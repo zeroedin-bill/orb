@@ -16,6 +16,7 @@ function createOverlay() {
 }
 
 var Dialog = module.exports = React.createClass({
+  displayName: 'Dialog',
   statics: {
     create: function() {
         var dialogFactory = React.createFactory(Dialog);
@@ -23,7 +24,7 @@ var Dialog = module.exports = React.createClass({
 
         return {
           show: function(props) {
-            React.render(dialogFactory(props), overlay);
+            ReactDOM.render(dialogFactory(props), overlay);
           }
         };
     }
@@ -57,7 +58,7 @@ var Dialog = module.exports = React.createClass({
     var target = e.target || e.srcElement;
     if(target == this.overlayElement || target.className === 'button-close') {
       utils.removeEventListener(this.overlayElement, 'click', this.close);
-      React.unmountComponentAtNode(this.overlayElement);
+      ReactDOM.unmountComponentAtNode(this.overlayElement);
       this.setOverlayClass(false);
     }
   },

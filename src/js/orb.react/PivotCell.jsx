@@ -14,6 +14,7 @@ var _paddingLeft = null;
 var _borderLeft = null;
 
 module.exports = React.createClass({
+  displayName: 'PivotCell',
   expand: function() {
     this.props.pivotTableComp.expandRow(this.props.cell);
   },

@@ -11,6 +11,7 @@ var React = require('react'),
     DropTarget = require('./DropTarget');
 
 module.exports = React.createClass({
+    displayName: 'PivotTable.ColumnButtons',
   render: function() {
     var self = this;
 

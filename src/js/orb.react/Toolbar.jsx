@@ -11,6 +11,7 @@ var React = require('react'),
     domUtils = require('../orb.utils.dom');
 
 module.exports = React.createClass({
+  displayName: 'Toolbar',
   _toInit: [],
   componentDidMount: function() {
     for(var i = 0; i < this._toInit.length; i++){

@@ -8,6 +8,7 @@ var React = require('react'),
     ReactDOM = require('react-dom');
 
 module.exports = React.createClass({
+  displayName: 'Chart',
   getInitialState: function() {
     return {
       canRender: false

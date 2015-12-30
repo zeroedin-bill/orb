@@ -9,6 +9,7 @@ var React = require('react'),
     DropTarget = require('./DropTarget');
 
 module.exports = React.createClass({
+    displayName: 'PivotTable.UpperButtons',
     render: function () {
         var self = this;
 

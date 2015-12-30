@@ -10,6 +10,7 @@ var React = require('react'),
     PivotRow = require('./PivotRow');
 
 module.exports = React.createClass({
+  displayName: 'PivotTable.ColumnHeaders',
   render: function() {
     var self = this;
     var pgridwidget = this.props.pivotTableComp.pgridwidget;

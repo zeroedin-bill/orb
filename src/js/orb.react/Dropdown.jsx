@@ -10,6 +10,7 @@ var React = require('react'),
 	utils = require('../orb.utils');
 
 module.exports = React.createClass({
+	displayName: 'Dropdown',
 	openOrClose: function(e) {
 		var valueNode = this.refs.valueElement;
 		var valuesListNode = this.refs.valuesList;

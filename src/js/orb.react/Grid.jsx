@@ -9,6 +9,7 @@ var React = require('react'),
     utils = require('../orb.utils');
 
 module.exports = React.createClass({
+  displayName: 'Grid',
   render: function() {
     var data = this.props.data;
     var headers = this.props.headers;

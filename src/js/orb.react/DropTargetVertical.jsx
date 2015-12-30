@@ -13,6 +13,7 @@ var DropIndicator = require('./DropIndicator');
 var dtid = 0;
 
 module.exports = React.createClass({
+	displayName: 'DropTargetVertical',
 	getInitialState: function () {
 		this.dtid = ++dtid;
 		return {

@@ -13,6 +13,7 @@ var React = require('react'),
 	domUtils = require('../orb.utils.dom');
 
 module.exports = React.createClass({
+	displayName: 'FilterPanel',
 	pgridwidget: null,
 	values: null,
 	filterManager: null,
@@ -22,7 +23,7 @@ module.exports = React.createClass({
 	},
 	destroy: function() {
 		var container = ReactDOM.findDOMNode(this).parentNode;
-		React.unmountComponentAtNode(container);
+		ReactDOM.unmountComponentAtNode(container);
 		container.parentNode.removeChild(container);
 	},
 	onFilter: function(operator, term, staticValue, excludeStatic) {

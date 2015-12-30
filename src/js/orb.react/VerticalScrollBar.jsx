@@ -8,6 +8,7 @@ var React = require('react'),
 var ScrollBarMixin = require('./ScrollBarMixin');
 
 module.exports = React.createClass({
+    displayName: 'VerticalScrollBar',
     mixins: [ScrollBarMixin],
     posProp: 'y',
     mousePosProp: 'pageY',

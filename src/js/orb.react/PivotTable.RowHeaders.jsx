@@ -8,6 +8,7 @@ var React = require('react'),
     ReactDOM = require('react-dom');
 
 module.exports = React.createClass({
+    displayName: 'PivotTable.RowHeaders',
     setColGroup: function (widths) {
         var node = ReactDOM.findDOMNode(this);
         var colGroupNode = this.refs.colgroup;

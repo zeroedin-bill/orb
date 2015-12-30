@@ -28,6 +28,7 @@ module.exports = React.createClass({
   pgrid: null,
   pgridwidget: null,
   fontStyle: null,
+  displayName: 'PivotTable',
   getInitialState: function() {
     DragManager.init(this);
     
@@ -40,39 +41,29 @@ module.exports = React.createClass({
   },
   sort: function(axetype, field) {
     this.pgridwidget.sort(axetype, field);
-    this.setProps({});
   },
   moveButton: function(button, newAxeType, position) {
-    if(this.pgridwidget.moveField(button.props.field.name, button.props.axetype, newAxeType, position)) {
-      this.setProps({});
-    }
+    this.pgridwidget.moveField(button.props.field.name, button.props.axetype, newAxeType, position)
   },
   toggleFieldExpansion: function(axetype, field, newState) {
-    if(this.pgridwidget.toggleFieldExpansion(axetype, field, newState)) {
-      this.setProps({});
-    }
+    this.pgridwidget.toggleFieldExpansion(axetype, field, newState)
   },
   toggleSubtotals: function(axetype) {
-    if(this.pgridwidget.toggleSubtotals(axetype)) {
-      this.setProps({});
-    }
+    this.pgridwidget.toggleSubtotals(axetype)
   },
   toggleGrandtotal: function(axetype) {
-    if(this.pgridwidget.toggleGrandtotal(axetype)) {
-      this.setProps({});
-    }
+    this.pgridwidget.toggleGrandtotal(axetype)
   },
   expandRow: function(cell) {
     cell.expand();
-    this.setProps({});
+    this.pgridwidget.render();
   },
   collapseRow: function(cell) {
     cell.subtotalHeader.collapse();
-    this.setProps({});
+    this.pgridwidget.render();
   },
   applyFilter: function(fieldname, operator, term, staticValue, excludeStatic) {
     this.pgridwidget.applyFilter(fieldname, operator, term, staticValue, excludeStatic);
-    this.setProps({});
   },
   registerThemeChanged: function(compCallback) {
     if(compCallback) {

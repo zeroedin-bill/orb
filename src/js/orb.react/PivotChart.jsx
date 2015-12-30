@@ -19,6 +19,7 @@ var pivotId = 1;
 var themeChangeCallbacks = {};
 
 module.exports = React.createClass({
+  displayName: 'PivotChart',
   id: pivotId++,
   pgrid: null,
   pgridwidget: null,

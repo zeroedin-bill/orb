@@ -12,6 +12,7 @@ var React = require('react'),
     DropTargetVertical = require('./DropTargetVertical');
 
 module.exports = React.createClass({
+    displayName: 'PivotTable.RowButtons',
   render: function() {
     var self = this;
 

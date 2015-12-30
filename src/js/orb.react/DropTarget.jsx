@@ -50,16 +50,9 @@ var DropTarget = React.createClass({
 
 		var buttons = this.props.buttons.map(function(button, index) {			
 			if(index < self.props.buttons.length - 1) {
-				return [
-					<td><DropIndicator isFirst={index === 0} position={index} axetype={self.props.axetype} /></td>,
-					<td>{ button }</td>
-				];
+				return <td key={index}>{ button }</td>;
 			} else {
-				return [
-					<td><DropIndicator isFirst={index === 0} position={index} axetype={self.props.axetype} /></td>,
-					<td>{ button }</td>,
-					<td><DropIndicator isLast={true} position={null} axetype={self.props.axetype} /></td>
-				];
+				return <td key={index}>{ button }</td>;
 			}
 		});
 

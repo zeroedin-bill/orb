@@ -160,8 +160,11 @@ module.exports = function(config) {
         pivotComponent.changeTheme(newTheme);
     };
 
-    this.render = function(element) {
+    this.renderTo = function(element) {
         renderElement = element;
+    };
+
+    this.render = function() {
         if(renderElement) {            
             var pivotTableFactory = React.createFactory(
                 self.pgrid.config.chartMode.enabled ?
@@ -171,7 +174,7 @@ module.exports = function(config) {
                 pgridwidget: self
             });
 
-            pivotComponent = ReactDOM.render(pivottable, element);
+            pivotComponent = ReactDOM.render(pivottable, renderElement);
         }
     };
 
@@ -266,5 +269,7 @@ module.exports = function(config) {
             }
         }
         self.dataRows = dataRows;
+
+        self.render();
     }
 };

@@ -10,6 +10,7 @@ var React = require('react'),
     PivotRow = require('./PivotRow');
 
 module.exports = React.createClass({
+    displayName: 'PivotTable.DataCells',
   render: function() {
     var self = this;
 
